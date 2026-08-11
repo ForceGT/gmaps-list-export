@@ -5,7 +5,7 @@
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-56d364?style=flat-square"></a>
   <a href="https://www.python.org/downloads/"><img alt="Requires Python 3.6+" src="https://img.shields.io/badge/python-3.6%2B-79c0ff?style=flat-square&logo=python&logoColor=white"></a>
-  <a href="requirements.txt"><img alt="Zero third-party packages" src="https://img.shields.io/badge/pip%20installs-0-58a6ff?style=flat-square"></a>
+  <img alt="Zero third-party packages" src="https://img.shields.io/badge/pip%20installs-0-58a6ff?style=flat-square">
   <img alt="No Google account sign-in required for public lists" src="https://img.shields.io/badge/google%20sign--in-not%20required-8b949e?style=flat-square">
 </p>
 
@@ -27,16 +27,15 @@ Pointing an AI coding agent at this instead? See [AGENTS.md](AGENTS.md) in this 
    git clone https://github.com/ForceGT/gmaps-list-export.git
    cd gmaps-list-export
    ```
-3. (Optional) `pip install -r requirements.txt` — included for completeness and for tools that expect one to exist; it installs nothing because there's nothing to install.
-4. Grab a Google Maps list share link (open the list in Maps, Share, Copy link) and run:
+3. Grab a Google Maps list share link (open the list in Maps, Share, Copy link) and run:
    ```bash
    python3 gmaps_list_export.py "<share-link>" --format json,csv,kml
    ```
-5. Read the output files (`places.json`, `places.csv`, `places.kml` by default) — see [Available export formats](#available-export-formats) below for what each is good for.
+4. Read the output files (`places.json`, `places.csv`, `places.kml` by default) — see [Available export formats](#available-export-formats) below for what each is good for.
 
 ### For AI coding agents
 
-Full machine-oriented instructions, including when to reach for this script and how to handle its error modes, live in [AGENTS.md](AGENTS.md). Short version: confirm a Python 3 interpreter is on `PATH`, treat `requirements.txt` as a no-op (there's nothing to install), then invoke the script directly per the usage example below — no build step, no virtualenv required (though using one is harmless).
+Full machine-oriented instructions, including when to reach for this script and how to handle its error modes, live in [AGENTS.md](AGENTS.md). Short version: confirm a Python 3 interpreter is on `PATH`, then invoke the script directly per the usage example below — no `pip install`, no build step, no virtualenv required.
 
 ## The problem this solves
 
