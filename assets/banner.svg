@@ -28,7 +28,7 @@
 
   <text x="180" y="118" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="42" font-weight="700" fill="#e6edf3">gmaps-list-export</text>
 
-  <text x="180" y="158" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="19" fill="#8b949e">Export any Google Maps list &#8212; even ones you don't own &#8212; to</text>
+  <text x="180" y="158" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="19" fill="#8b949e">Export any Google Maps list &#8212; owned, shared, or joined &#8212; to</text>
   <text x="180" y="184" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="19" fill="#8b949e">JSON <tspan fill="#484f58">&#183;</tspan> CSV <tspan fill="#484f58">&#183;</tspan> GeoJSON <tspan fill="#484f58">&#183;</tspan> KML <tspan fill="#484f58">&#183;</tspan> GPX. Zero dependencies. No sign-in.</text>
 
   <text x="180" y="222" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="16" fill="#56d364">$ python3 gmaps_list_export.py "&lt;share-link&gt;" --format json,csv,kml</text>
