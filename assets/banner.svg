@@ -1,0 +1,35 @@
+<svg width="1200" height="260" viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="gmaps-list-export banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="50%" stop-color="#79c0ff"/>
+      <stop offset="100%" stop-color="#56d364"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="260" rx="14" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="1199" height="259" rx="14" fill="none" stroke="#30363d" stroke-width="1"/>
+
+  <!-- terminal window chrome -->
+  <circle cx="34" cy="32" r="6" fill="#ff5f56"/>
+  <circle cx="54" cy="32" r="6" fill="#ffbd2e"/>
+  <circle cx="74" cy="32" r="6" fill="#27c93f"/>
+  <line x1="0" y1="54" x2="1200" y2="54" stroke="#21262d" stroke-width="1"/>
+
+  <!-- pin / marker icon -->
+  <g transform="translate(60,108)">
+    <path d="M40 0c-19 0-34 15-34 34 0 25 34 62 34 62s34-37 34-62c0-19-15-34-34-34z" fill="none" stroke="url(#accent)" stroke-width="4"/>
+    <circle cx="40" cy="34" r="13" fill="url(#accent)"/>
+  </g>
+
+  <text x="180" y="118" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="42" font-weight="700" fill="#e6edf3">gmaps-list-export</text>
+
+  <text x="180" y="158" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="19" fill="#8b949e">Export any Google Maps list &#8212; even ones you don't own &#8212; to</text>
+  <text x="180" y="184" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="19" fill="#8b949e">JSON <tspan fill="#484f58">&#183;</tspan> CSV <tspan fill="#484f58">&#183;</tspan> GeoJSON <tspan fill="#484f58">&#183;</tspan> KML <tspan fill="#484f58">&#183;</tspan> GPX. Zero dependencies. No sign-in.</text>
+
+  <text x="180" y="222" font-family="'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="16" fill="#56d364">$ python3 gmaps_list_export.py "&lt;share-link&gt;" --format json,csv,kml</text>
+</svg>

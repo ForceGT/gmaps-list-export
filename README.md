@@ -1,3 +1,14 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="gmaps-list-export — export any Google Maps list to JSON, CSV, GeoJSON, KML or GPX" width="100%">
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-56d364?style=flat-square"></a>
+  <a href="https://www.python.org/downloads/"><img alt="Python 3" src="https://img.shields.io/badge/python-3-79c0ff?style=flat-square&logo=python&logoColor=white"></a>
+  <img alt="Zero dependencies" src="https://img.shields.io/badge/dependencies-0-58a6ff?style=flat-square">
+  <img alt="No sign-in required" src="https://img.shields.io/badge/sign--in-not%20required-8b949e?style=flat-square">
+</p>
+
 # Export a Google Maps List to CSV, JSON, KML or GPX (Free, No Extension, No Sign-In)
 
 A free, open-source Python script that exports any Google Maps list to CSV, JSON, GeoJSON, KML, or GPX. This works on shared lists you don't own, lists you only joined, not just your own. No Chrome extension, no account sign-in, no Google Takeout, no per-export limit.
@@ -17,6 +28,10 @@ python3 gmaps_list_export.py "https://maps.app.goo.gl/XXXXXXXX" --format json,cs
 ```
 
 Works with a short share link (`maps.app.goo.gl/...`) or the long form Maps gives you from the address bar.
+
+<p align="center">
+  <img src="assets/demo.svg" alt="animated terminal demo: running gmaps_list_export.py against a shared list and writing json, csv and kml" width="100%">
+</p>
 
 ```
 $ python3 gmaps_list_export.py "https://maps.app.goo.gl/XXXXXXXX" --format json,csv,kml
