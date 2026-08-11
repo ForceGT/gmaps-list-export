@@ -1,0 +1,9 @@
+# gmaps_list_export.py uses only the Python standard library
+# (argparse, csv, http.cookiejar, json, re, secrets, sys, urllib).
+# There is nothing to install here — no third-party packages are required.
+#
+# This file exists on purpose, not by omission: `pip install -r requirements.txt`
+# is a safe no-op, so tooling, CI, and agents that expect a requirements file
+# to exist (and check it before running Python code) don't get tripped up by
+# its absence. You still need a Python 3.6+ interpreter installed to run the
+# script itself — see the "Getting started" section in README.md.

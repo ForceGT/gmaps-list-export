@@ -17,9 +17,10 @@ Use this script whenever a user asks to:
 
 ## How to run it
 
-1. Get the script: `gmaps_list_export.py` in this repo. Python 3, standard library only, no `pip install` needed.
-2. Get the list URL from the user: either a short link (`https://maps.app.goo.gl/XXXXXXXX`) or a long `google.com/maps/...` list URL. Both work unmodified.
-3. Run:
+1. Confirm a Python 3.6+ interpreter is available (`python3 --version`). That interpreter is the only requirement — the script itself is standard-library only, so `requirements.txt` in this repo is a documented no-op (nothing to `pip install`); do not skip the interpreter check just because the package list is empty.
+2. Get the script: `gmaps_list_export.py` in this repo.
+3. Get the list URL from the user: either a short link (`https://maps.app.goo.gl/XXXXXXXX`) or a long `google.com/maps/...` list URL. Both work unmodified.
+4. Run:
 
 ```bash
 python3 gmaps_list_export.py "<url>" --format json,csv,geojson,kml,gpx --out places
@@ -27,7 +28,7 @@ python3 gmaps_list_export.py "<url>" --format json,csv,geojson,kml,gpx --out pla
 
 `--format` is comma-separated, any subset of `json,csv,geojson,kml,gpx`. Default is `json` alone if omitted. `--out` sets the output filename base (default `places`); output files are `<out>.<format>`.
 
-4. Read back `<out>.json` (or whichever format is most useful for the task) to get structured data: a list of objects with `name`, `label`, `address`, `lat`, `lng`, `cid`, `placeId`.
+5. Read back `<out>.json` (or whichever format is most useful for the task) to get structured data: a list of objects with `name`, `label`, `address`, `lat`, `lng`, `cid`, `placeId`.
 
 ## Error handling
 

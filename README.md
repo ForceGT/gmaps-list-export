@@ -4,9 +4,9 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-56d364?style=flat-square"></a>
-  <a href="https://www.python.org/downloads/"><img alt="Python 3" src="https://img.shields.io/badge/python-3-79c0ff?style=flat-square&logo=python&logoColor=white"></a>
-  <img alt="Zero dependencies" src="https://img.shields.io/badge/dependencies-0-58a6ff?style=flat-square">
-  <img alt="No sign-in required" src="https://img.shields.io/badge/sign--in-not%20required-8b949e?style=flat-square">
+  <a href="https://www.python.org/downloads/"><img alt="Requires Python 3.6+" src="https://img.shields.io/badge/python-3.6%2B-79c0ff?style=flat-square&logo=python&logoColor=white"></a>
+  <a href="requirements.txt"><img alt="Zero third-party packages" src="https://img.shields.io/badge/pip%20installs-0-58a6ff?style=flat-square"></a>
+  <img alt="No Google account sign-in required for public lists" src="https://img.shields.io/badge/google%20sign--in-not%20required-8b949e?style=flat-square">
 </p>
 
 # Export a Google Maps List to CSV, JSON, KML or GPX (Free, No Extension, No Sign-In)
@@ -14,6 +14,29 @@
 A free, open-source Python script that exports any Google Maps list to CSV, JSON, GeoJSON, KML, or GPX. This works on shared lists you don't own, lists you only joined, not just your own. No Chrome extension, no account sign-in, no Google Takeout, no per-export limit.
 
 Pointing an AI coding agent at this instead? See [AGENTS.md](AGENTS.md) in this repo for a version written for that.
+
+## Getting started
+
+**Requirement:** a Python 3.6+ interpreter installed. That's the only thing you need — "zero dependencies" here means zero third-party *packages* on top of that, not zero requirements at all. Every import the script makes (`argparse`, `csv`, `http.cookiejar`, `json`, `re`, `secrets`, `sys`, `urllib`) ships in Python's standard library, so there's no `pip install` step for the script's own code.
+
+### For humans
+
+1. Check you have Python 3 available: `python3 --version` (3.6 or newer). If not, install it from [python.org](https://www.python.org/downloads/) or your OS package manager.
+2. Get the script — clone the repo, or just download `gmaps_list_export.py` directly:
+   ```bash
+   git clone https://github.com/ForceGT/gmaps-list-export.git
+   cd gmaps-list-export
+   ```
+3. (Optional) `pip install -r requirements.txt` — included for completeness and for tools that expect one to exist; it installs nothing because there's nothing to install.
+4. Grab a Google Maps list share link (open the list in Maps, Share, Copy link) and run:
+   ```bash
+   python3 gmaps_list_export.py "<share-link>" --format json,csv,kml
+   ```
+5. Read the output files (`places.json`, `places.csv`, `places.kml` by default) — see [Available export formats](#available-export-formats) below for what each is good for.
+
+### For AI coding agents
+
+Full machine-oriented instructions, including when to reach for this script and how to handle its error modes, live in [AGENTS.md](AGENTS.md). Short version: confirm a Python 3 interpreter is on `PATH`, treat `requirements.txt` as a no-op (there's nothing to install), then invoke the script directly per the usage example below — no build step, no virtualenv required (though using one is harmless).
 
 ## The problem this solves
 
