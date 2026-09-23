@@ -4,7 +4,7 @@ Instructions for an AI coding agent using this repo. For human-readable docs, se
 
 ## What this does
 
-`gmaps_list_export.py` converts a Google Maps list share link into structured place data (name, address, lat, lng, and Google's internal CID and placeId). It works on lists the requesting user does not own, including lists they only joined. It requires no API key, no browser, and no authentication for a publicly shared list.
+`gmaps_list_export.py` converts a Google Maps list share link into structured place data (name, address, lat, lng, Google's internal CID and placeId, and per-place user-authored notes). It works on lists the requesting user does not own, including lists they only joined. It requires no API key, no browser, and no authentication for a publicly shared list.
 
 ## When to use this
 
@@ -28,7 +28,9 @@ python3 gmaps_list_export.py "<url>" --format json,csv,geojson,kml,gpx --out pla
 
 `--format` is comma-separated, any subset of `json,csv,geojson,kml,gpx`. Default is `json` alone if omitted. `--out` sets the output filename base (default `places`); output files are `<out>.<format>`.
 
-5. Read back `<out>.json` (or whichever format is most useful for the task) to get structured data: a list of objects with `name`, `label`, `address`, `lat`, `lng`, `cid`, `placeId`.
+5. Read back `<out>.json` (or whichever format is most useful for the task) to get structured data: a list of objects with `name`, `label`, `address`, `lat`, `lng`, `cid`, `placeId`, `note`. CSV adds `note` last, GeoJSON includes it in properties, KML puts nonempty notes in `ExtendedData` named `note`, and GPX puts them in waypoint `<cmt>`. Empty notes have no KML/GPX note element.
+
+Run the focused regression checks with `python3 -m unittest discover -s tests -v`.
 
 ## Error handling
 

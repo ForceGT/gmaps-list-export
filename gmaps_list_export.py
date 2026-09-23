@@ -105,6 +105,7 @@ def parse_place(p):
         "lng": lng,
         "cid": cid[0] + ":" + cid[1] if cid else None,
         "placeId": place_id,
+        "note": p[3] if len(p) > 3 else None,
     }
 
 
@@ -117,7 +118,7 @@ def write_json(places, out):
 
 def write_csv(places, out):
     path = f"{out}.csv"
-    fields = ["name", "label", "address", "lat", "lng", "cid", "placeId"]
+    fields = ["name", "label", "address", "lat", "lng", "cid", "placeId", "note"]
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
@@ -154,10 +155,13 @@ def write_kml(places, out, list_title):
     for p in places:
         if p["lat"] is None:
             continue
+        note_data = (f'    <ExtendedData><Data name="note"><value>{_xml_escape(p["note"])}</value></Data></ExtendedData>\n'
+                     if p["note"] else "")
         placemarks.append(
             "  <Placemark>\n"
             f"    <name>{_xml_escape(p['name'])}</name>\n"
             f"    <description>{_xml_escape(p['address'])}</description>\n"
+            f"{note_data}"
             f"    <Point><coordinates>{p['lng']},{p['lat']},0</coordinates></Point>\n"
             "  </Placemark>"
         )
@@ -182,9 +186,11 @@ def write_gpx(places, out, list_title):
     for p in places:
         if p["lat"] is None:
             continue
+        note_data = f"    <cmt>{_xml_escape(p['note'])}</cmt>\n" if p["note"] else ""
         waypoints.append(
             f'  <wpt lat="{p["lat"]}" lon="{p["lng"]}">\n'
             f"    <name>{_xml_escape(p['name'])}</name>\n"
+            f"{note_data}"
             f"    <desc>{_xml_escape(p['address'])}</desc>\n"
             "  </wpt>"
         )
