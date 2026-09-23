@@ -90,6 +90,11 @@ Every place comes back with real coordinates, pulled directly from the same data
 - `lat` / `lng`: coordinates
 - `cid`: Google's internal CID pair for the place
 - `placeId`: short-form place ID (`/g/...`), for looking the place up again later
+- `note`: the note written on that place in the list (empty string when blank, `null` if the source field is absent)
+
+The `note` field is included in JSON, CSV (after `placeId`), and GeoJSON properties. For places with a note, KML stores it as `ExtendedData` named `note`, and GPX stores it as a waypoint `<cmt>`; the existing address description remains unchanged. Empty notes have no KML/GPX note element. Places without coordinates remain in JSON/CSV but are omitted from geographic formats.
+
+Run the focused regression checks with `python3 -m unittest discover -s tests -v`.
 
 ## Why it works
 
