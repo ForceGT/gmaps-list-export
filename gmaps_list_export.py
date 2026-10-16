@@ -53,9 +53,7 @@ def resolve_list(url):
     return list_id, token, opener
 
 
-def fetch_places(list_id, token, opener):
-    """Call the (undocumented) entitylist/getlist endpoint the list's own
-    page uses to render itself, and return the raw place entries."""
+def _get_list(list_id, token, opener, limit):
     list_page_url = f"https://www.google.com/maps/placelists/list/{list_id}"
     if token:
         list_page_url += f"?token={token}"
@@ -64,7 +62,7 @@ def fetch_places(list_id, token, opener):
     # one works fine, it doesn't appear to be validated server-side.
     session = secrets.token_urlsafe(16)
     pb = (
-        "!2e2!3e2!4i500!6m3"
+        f"!2e2!3e2!4i{limit}!6m3"
         f"!1s{session}"
         "!15i204459!28e2"
         f"!13s{urllib.parse.quote(list_page_url, safe='')}"
@@ -77,14 +75,24 @@ def fetch_places(list_id, token, opener):
     text = opener.open(req).read().decode("utf-8")
     if text.startswith(")]}'"):
         text = text[4:]
+    return json.loads(text)
 
-    data = json.loads(text)
+
+def fetch_places(list_id, token, opener):
+    """Call the (undocumented) entitylist/getlist endpoint the list's own
+    page uses to render itself, and return the raw place entries."""
+    # `4i<N>` is the page size. First call asks for 500; the list's total
+    # count is at data[0][12]. If the list is bigger, the server accepts a
+    # larger `4i`, so ask again with the full total.
+    data = _get_list(list_id, token, opener, 500)
+    total = data[0][12] if len(data[0]) > 12 and isinstance(data[0][12], int) else None
+    if total and total > len(data[0][8]):
+        data = _get_list(list_id, token, opener, total)
+
     list_title = data[0][4] if len(data[0]) > 4 else None
     raw_places = data[0][8]
-
-    # 500 entries per call (the `4i500` param); page through if the list is
-    # bigger. Untested against a real >500 list. The list's total count
-    # lives at data[0][12] if you want to sanity-check completeness.
+    if total and len(raw_places) < total:
+        print(f"  warning: got {len(raw_places)} of {total} places", file=sys.stderr)
     return list_title, raw_places
 
 
